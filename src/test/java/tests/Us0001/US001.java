@@ -33,4 +33,9 @@ public class US001 {
         vendorRegistrationPage.vendorRegistrationRegisterButonu.click();
         Assert.assertTrue(vendorRegistrationPage.getVendorRegistrationOnayMesaji.isDisplayed());
     }
+    @Test
+    public void login(){
+        reusableMethots.login();
+
+    }
 }

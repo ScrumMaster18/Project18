@@ -33,10 +33,11 @@ HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
 
     }
 public void login(){
+     Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         hubcomfyAnaSayfa.signInButonu.click();
-        hubcomfyAnaSayfa.signInPopUpEmail.sendKeys(ConfigReader.getProperty());
-
-
+        hubcomfyAnaSayfa.signInPopUpEmail.sendKeys(ConfigReader.getProperty("user"));
+hubcomfyAnaSayfa.signInPopUpPassword.sendKeys(ConfigReader.getProperty("password"));
+hubcomfyAnaSayfa.signInPopUpSignInButonu.click();
 
 }
 
