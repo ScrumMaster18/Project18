@@ -16,8 +16,13 @@ public WebElement vendorRegistrationPassword;
     @FindBy (xpath = "//input[@name='wcfm_email_verified_input']")
 public WebElement vendorVerificationCode;
 
+    @FindBy(xpath = "//input[@id='confirm_pwd']")
+    public WebElement vendorRegistrationConfirmPassword;
 
-
+    @FindBy(xpath = "//input[@type='submit']")
+    public WebElement vendorRegistrationRegisterButonu;
+@FindBy(xpath = "//*[@class='wcfm-message wcfm-success']")
+    public WebElement getVendorRegistrationOnayMesaji;
 
 
 
