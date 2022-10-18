@@ -1,59 +1,36 @@
 package tests.Us0001;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HubcomfyAnaSayfa;
-import pages.TempMail;
 import pages.VendorRegistrationPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethots;
 
 public class US001 {
-    HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
-VendorRegistrationPage vendorRegistrationPage=new VendorRegistrationPage();
-TempMail tempMail=new TempMail();
-    String email;
-String verificationCode;
-String HubComfyWindowHandle;
-String tempMailWindowHandle;
+    HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
+    VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
+    String HubComfyWindowHandle;
+    ReusableMethots reusableMethots = new ReusableMethots();
+
     @Test
-    public void pozitifLoginTest() throws InterruptedException {
+    public void openAccount() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
-hubcomfyAnaSayfa.anasayfaRegiterButonu.click();
-Thread.sleep(2000);
-hubcomfyAnaSayfa.anasayfaPopUpBecameVendor.click();
-HubComfyWindowHandle=Driver.getDriver().getWindowHandle();
-        emailAdresi();
-Driver.getDriver().switchTo().window(HubComfyWindowHandle);
-vendorRegistrationPage.vendorRegistrationEmail.sendKeys(email);
-vendorRegistrationPage.vendorRegistrationPassword.sendKeys(ConfigReader.getProperty("validPassword"));
-        Driver.getDriver().switchTo().window(tempMailWindowHandle);
-verificationCode();
+        hubcomfyAnaSayfa.anasayfaRegiterButonu.click();
+        hubcomfyAnaSayfa.anasayfaPopUpBecameVendor.click();
+        HubComfyWindowHandle = Driver.getDriver().getWindowHandle();
+        reusableMethots.emailAdresi();
         Driver.getDriver().switchTo().window(HubComfyWindowHandle);
-vendorRegistrationPage.vendorVerificationCode.sendKeys(verificationCode);
-     //   Driver.closeDriver();
-
+        vendorRegistrationPage.vendorRegistrationEmail.sendKeys(reusableMethots.email);
+        vendorRegistrationPage.vendorRegistrationPassword.sendKeys(ConfigReader.getProperty("validPassword"));
+        Driver.getDriver().switchTo().window(reusableMethots.tempMailWindowHandle);
+        reusableMethots.verificationCode();
+        Driver.getDriver().switchTo().window(HubComfyWindowHandle);
+        vendorRegistrationPage.vendorVerificationCode.sendKeys(reusableMethots.verificationCode);
+        vendorRegistrationPage.vendorRegistrationConfirmPassword.sendKeys(ConfigReader.getProperty("validPassword"));
+        vendorRegistrationPage.vendorRegistrationRegisterButonu.click();
+        Assert.assertTrue(vendorRegistrationPage.getVendorRegistrationOnayMesaji.isDisplayed());
     }
-
-public String emailAdresi(){
-
-    Driver.getDriver().switchTo().newWindow(WindowType.TAB).get("https://www.minuteinbox.com/");
-email=tempMail.emailAdresi.getText();
-    tempMailWindowHandle=Driver.getDriver().getWindowHandle();
-    System.out.println(email);
-    this.email=email;
-        return email;
-}
-public String  verificationCode(){
-verificationCode=tempMail.verificationCode.getText().replaceAll("\\D","");
-        //verificationCode=Integer.parseInt(str);
-return verificationCode;
-
-}
-
 }
