@@ -29,6 +29,12 @@ public class HubcomfyAnaSayfa {
 
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signInPopUpSignInButonu;
+    
+    
+    @FindBy (xpath = "(//*[text()='My Account'])[2]")
+    public WebElement homePageMyAccountButton;
+    @FindBy (xpath = "//*[text()='Store Manager']")
+    public WebElement StoreManager
 
 
 }
