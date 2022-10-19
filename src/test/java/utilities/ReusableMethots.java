@@ -11,7 +11,7 @@ HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
     TempMail tempMail = new TempMail();
     public String email;
     public String verificationCode;
-    String HubComfyWindowHandle;
+
     public String tempMailWindowHandle;
 
 
