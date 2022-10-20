@@ -33,6 +33,10 @@ public WebElement storeManagerMenuProducts;
    // public WebElement storeManagerMenuFollowerps;
     //@FindBy(xpath = "//span[contains(text(),'Reviews')]")
    // public WebElement storeManagerMenuReviews;
+    @FindBy (xpath = "(//*[text()='My Account'])[2]")
+    public WebElement storeManagerMenuMyAccount;
+    @FindBy (xpath = "//*[text()='Store Manager']")
+    public WebElement StoreManager;
 
 
 
