@@ -29,10 +29,58 @@ public WebElement storeManagerMenuProducts;
     public WebElement storeManagerMenuReviews;
     @FindBy(xpath = "//span[contains(text(),'Reports')]")
     public WebElement storeManagerMenuReports;
-  //  @FindBy(xpath = "//span[contains(text(),'Followers')]")
-   // public WebElement storeManagerMenuFollowerps;
-    //@FindBy(xpath = "//span[contains(text(),'Reviews')]")
-   // public WebElement storeManagerMenuReviews;
+
+    @FindBy(xpath = "//h2[@class='page-title']")
+    public WebElement myAccountYazı;
+
+    @FindBy(xpath = "//a[@href='https://hubcomfy.com/store-manager/product-reviews/']")
+    public WebElement productReviews;
+
+    @FindBy(xpath = "(//div[@class='wcfmmp-author-meta'])[1]")
+    public WebElement reviwesauthor;
+
+    @FindBy(xpath = "(//div[@class='wcfmmp-comments-content'])[1]")
+    public WebElement reviewscomment;
+
+    @FindBy(xpath = "//div[@title='Rated 2 out of 5']")
+    public WebElement reviewsrate;
+
+    @FindBy(xpath = "//tbody//tr[1]//td[6]")
+    public WebElement reviewsdate;
+
+    @FindBy(xpath = "//iframe[@class='chartjs-hidden-iframe']")
+    public WebElement iframe;
+
+    @FindBy(xpath = "//body[@data-rsssl='1']")
+    public WebElement signin;
+
+    @FindBy(xpath = "//tbody//tr[1]")
+    public WebElement followerlistbody;
+
+    @FindBy(xpath = "//a[@href='/store-manager/reports-sales-by-date/?range=year']")
+    public WebElement reportsyear;
+
+    @FindBy(xpath = "//a[@href='/store-manager/reports-sales-by-date/?range=last_month']")
+    public WebElement reportslastmonth;
+
+    @FindBy(xpath = "//a[@href='/store-manager/reports-sales-by-date/?range=month']")
+    public WebElement reportsthismonth;
+
+    @FindBy(xpath = "//a[@href='/store-manager/reports-sales-by-date/?range=7day']")
+    public WebElement reportslast7days;
+
+    @FindBy(xpath = "//input[@name='wcfm-date-range']")
+    public WebElement customdatebox;
+
+    @FindBy(xpath = "//div[@id='poststuff']")
+    public WebElement chart;
+
+    @FindBy(xpath = "(//tbody//tr[3]//td[5])[1]")
+    public WebElement customdate1;
+
+    @FindBy(xpath = "(//tbody//tr[4]//td[7])[1]")
+    public WebElement customdate2;
+
 
 
 

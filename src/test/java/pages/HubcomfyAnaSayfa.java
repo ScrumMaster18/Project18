@@ -33,6 +33,7 @@ public class HubcomfyAnaSayfa {
     
     @FindBy (xpath = "(//*[text()='My Account'])[2]")
     public WebElement homePageMyAccountButton;
+
     @FindBy (xpath = "//*[text()='Store Manager']")
     public WebElement myAccountPageStoreManagerMenu;
 
