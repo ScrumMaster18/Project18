@@ -1,9 +1,8 @@
-package tests.Us0008;
+package tests.Us0010;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,12 +14,11 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.ReusableMethots;
 
+import java.io.IOException;
 import java.time.Duration;
-import java.time.Instant;
+import java.util.List;
 
-
-public class Us08Tc01 {
-
+public class Us0010Tc02 {
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     ReusableMethots reusableMethots = new ReusableMethots();
     ReusableMethods reusableMethods = new ReusableMethods();
@@ -32,9 +30,8 @@ public class Us08Tc01 {
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
 
-
     @Test
-    public void stockBelirleme() throws InterruptedException { //Urun miktarı ve stock belirlenmeli
+    public void size() throws InterruptedException, IOException {
         //user basarılı bir sekilde giriş yapabilmeli
         reusableMethots.login();
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -51,8 +48,8 @@ public class Us08Tc01 {
         //product menu dogrulanmalı ve tıklanmalı
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Assert.assertTrue(storeManagerPage.storeManagerMenuProducts.isDisplayed());
-        jse.executeScript("arguments[0].scrollIntoView(true);",storeManagerPage.storeManagerMenuProducts);
-        jse.executeScript("arguments[0].click();",storeManagerPage.storeManagerMenuProducts);
+        jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerPage.storeManagerMenuProducts);
+        jse.executeScript("arguments[0].click();", storeManagerPage.storeManagerMenuProducts);
 
 
         //urun secimi yapılmalı ve tıklanmalı
@@ -62,49 +59,46 @@ public class Us08Tc01 {
 
         actions.sendKeys(Keys.PAGE_DOWN).
                 sendKeys(Keys.PAGE_DOWN).
+                sendKeys(Keys.PAGE_DOWN).
                 sendKeys(Keys.PAGE_DOWN).perform();
-        //ınventory secenegi  acık geliyor tıklama yapılmıyor
-        //ınventor secenegi dogrulanmalı yapılıyor tıklama yapılmıyor
-        String expectedInventoryText = storeManagerProductsPages.InventoryButton.getText();
-        Assert.assertEquals(storeManagerProductsPages.InventoryButton.getText(), expectedInventoryText);
 
-        //manage stock checkbox u erişilebilir olmalı secili degilse secilmeli
-        Assert.assertTrue(storeManagerProductsPages.InventoryPageManageStockCheckBox.isEnabled());
-        if (!storeManagerProductsPages.InventoryPageManageStockCheckBox.isSelected()) {
-            storeManagerProductsPages.InventoryPageManageStockCheckBox.isSelected();
-        }
+        //Attributes secenegi dogrulanmalı tıklanmalı
+        Assert.assertTrue(storeManagerProductsPages.AttributesButton.isDisplayed());
+        jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerProductsPages.AttributesButton);
+        jse.executeScript("arguments[0].click();", storeManagerProductsPages.AttributesButton);
 
-        //stock qty dodrulanmalı
-        String expectedInventoryPageStockQtyText = storeManagerProductsPages.InventoryPageStockQtyText.getText();
-        Assert.assertEquals(storeManagerProductsPages.InventoryPageStockQtyText.getText(), expectedInventoryPageStockQtyText);
 
-        //stock qty box u erişilebilir olmalı
-        Assert.assertTrue(storeManagerProductAddNewMenu.InventoryPageStockQtyDataBox.isEnabled());
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.clear();
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.sendKeys("22");
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyText.click();
+        String expectedSizeText = storeManagerProductsPages.AttributesButtonSizeText.getText();
+        Assert.assertEquals(storeManagerProductsPages.AttributesButtonSizeText.getText(), expectedSizeText);
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
+        Assert.assertTrue(storeManagerProductsPages.AttributesButtonSizeCheckbox.isEnabled());
+        if (!storeManagerProductsPages.AttributesButtonSizeCheckbox.isSelected()) {
+            storeManagerProductsPages.AttributesButtonSizeCheckbox.isSelected();
+        }
 
-        //sumbit butonu  tıklanmalı
-
-        jse.executeScript("arguments[0].scrollIntoView(true);",storeManagerProductsPages.ProductSubmitButton);
-        jse.executeScript("arguments[0].click();",storeManagerProductsPages.ProductSubmitButton);
-
-
-        //dogrulama mesajı görünür olmalı
-        wait.until(ExpectedConditions.visibilityOf(storeManagerProductsPages.ProductSuccessfullyPublishedMessage));
-
-        Assert.assertTrue(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.isDisplayed());
-        System.out.println(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.getText());
+        jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerProductsPages.AttributesButtonSizeCheckbox);
+        jse.executeScript("arguments[0].click();", storeManagerProductsPages.AttributesButtonSizeCheckbox);
 
 
+        jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerProductsPages.AttributesButtonSizeSelectAllButton);
+        jse.executeScript("arguments[0].click();", storeManagerProductsPages.AttributesButtonSizeSelectAllButton);
+
+        actions.sendKeys(Keys.PAGE_UP).perform();
+
+        WebElement sizeBox= Driver.getDriver().findElement(By.xpath("//select[@id='attributes_value_2']"));
+        Select select = new Select(sizeBox);
+        List<WebElement> sizeBoxList=Driver.getDriver().findElements(By.xpath("//select[@id='attributes_value_2']//option"));
+        sizeBoxList.forEach(t-> System.out.println(t.getText()));
 
 
 
 
+       // WebElement sizeSelectAll=Driver.getDriver().findElement(By.xpath("//*[@class='select2-selection__rendered'])[3]"));
+       // ReusableMethods.getScreenshotWebElement("sizeBox", sizeSelectAll);
 
-    }
-}
+    }}
+
+
+

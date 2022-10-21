@@ -3,7 +3,7 @@ package tests.Us0008;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -16,10 +16,9 @@ import utilities.ReusableMethods;
 import utilities.ReusableMethots;
 
 import java.time.Duration;
-import java.time.Instant;
+import java.util.List;
 
-
-public class Us08Tc01 {
+public class Us08Tc02 {
 
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     ReusableMethots reusableMethots = new ReusableMethots();
@@ -33,8 +32,9 @@ public class Us08Tc01 {
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
 
 
+
     @Test
-    public void stockBelirleme() throws InterruptedException { //Urun miktarı ve stock belirlenmeli
+    public void backorders() throws InterruptedException {
         //user basarılı bir sekilde giriş yapabilmeli
         reusableMethots.login();
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -74,31 +74,41 @@ public class Us08Tc01 {
             storeManagerProductsPages.InventoryPageManageStockCheckBox.isSelected();
         }
 
-        //stock qty dodrulanmalı
-        String expectedInventoryPageStockQtyText = storeManagerProductsPages.InventoryPageStockQtyText.getText();
-        Assert.assertEquals(storeManagerProductsPages.InventoryPageStockQtyText.getText(), expectedInventoryPageStockQtyText);
+        String expectedAllowBackordersText = storeManagerProductsPages.InventoryPageAllowBackordersText.getText();
+        System.out.println(expectedAllowBackordersText);
+        Assert.assertEquals(storeManagerProductsPages.InventoryPageAllowBackordersText.getText(), expectedAllowBackordersText);
 
-        //stock qty box u erişilebilir olmalı
-        Assert.assertTrue(storeManagerProductAddNewMenu.InventoryPageStockQtyDataBox.isEnabled());
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.clear();
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.sendKeys("22");
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyText.click();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(storeManagerProductsPages.InventoryPageAllowBackordersBox.isEnabled());
+        //drapdown seceneklerini dogrular
+        WebElement AllowBackordesDrapDawn= Driver.getDriver().findElement(By.xpath("//select[@id='backorders']"));
+        Select select = new Select(AllowBackordesDrapDawn);
+        List<WebElement> AllowBackordesDrapDawnList=Driver.getDriver().findElements(By.xpath("//select[@id='backorders']//option"));
+        AllowBackordesDrapDawnList.forEach(t-> System.out.println(t.getText()));
 
+        //do not Allow secenegine erişilebilir olmalıdır ve tıklanır
+        select.selectByVisibleText("Do not Allow");
+        Thread.sleep(2000);
 
-        //sumbit butonu  tıklanmalı
+        //do not Allow secenegine erişilebilir olmalıdır ve tıklanır
+        select.selectByVisibleText("Allow, but notify customer");
+        Thread.sleep(2000);
+
+        //Allow secenegine erişilebilir olmalıdır ve tıklanır
+        select.selectByVisibleText("Allow");
 
         jse.executeScript("arguments[0].scrollIntoView(true);",storeManagerProductsPages.ProductSubmitButton);
         jse.executeScript("arguments[0].click();",storeManagerProductsPages.ProductSubmitButton);
-
-
-        //dogrulama mesajı görünür olmalı
         wait.until(ExpectedConditions.visibilityOf(storeManagerProductsPages.ProductSuccessfullyPublishedMessage));
-
         Assert.assertTrue(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.isDisplayed());
         System.out.println(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.getText());
+
+
+
+
+
+
+
+
 
 
 

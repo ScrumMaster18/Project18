@@ -1,9 +1,10 @@
-package tests.Us0008;
+package tests.Us0009;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,12 +15,11 @@ import pages.StoreManagerProductsPages;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.ReusableMethots;
+import utilities.TestBaseRapor;
 
 import java.time.Duration;
-import java.time.Instant;
 
-
-public class Us08Tc01 {
+public class Us09Tc01 extends TestBaseRapor {
 
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     ReusableMethots reusableMethots = new ReusableMethots();
@@ -32,17 +32,19 @@ public class Us08Tc01 {
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
 
-
     @Test
-    public void stockBelirleme() throws InterruptedException { //Urun miktarı ve stock belirlenmeli
+    public void kiloBoyutBelirleme() {
+        extentTest=extentReports.createTest("Kilo Testi","Kilo Kontrol Edilir");
         //user basarılı bir sekilde giriş yapabilmeli
         reusableMethots.login();
+        extentTest.info("Login olundu");
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click()", hubcomfyAnaSayfa.homePageMyAccountButton);
 
         //My Account butonu dogrulanmalı ve tıklanmalı
         Assert.assertTrue(hubcomfyAnaSayfa.homePageMyAccountButton.isDisplayed());
         hubcomfyAnaSayfa.homePageMyAccountButton.click();
+        extentTest.info("My Account a gidildi");
 
         //store manager dogrulanmalı tıklanmalı
         Assert.assertTrue(hubcomfyAnaSayfa.myAccountPageStoreManagerMenu.isDisplayed());
@@ -62,45 +64,33 @@ public class Us08Tc01 {
 
         actions.sendKeys(Keys.PAGE_DOWN).
                 sendKeys(Keys.PAGE_DOWN).
+                sendKeys(Keys.PAGE_DOWN).
                 sendKeys(Keys.PAGE_DOWN).perform();
-        //ınventory secenegi  acık geliyor tıklama yapılmıyor
-        //ınventor secenegi dogrulanmalı yapılıyor tıklama yapılmıyor
-        String expectedInventoryText = storeManagerProductsPages.InventoryButton.getText();
-        Assert.assertEquals(storeManagerProductsPages.InventoryButton.getText(), expectedInventoryText);
 
-        //manage stock checkbox u erişilebilir olmalı secili degilse secilmeli
-        Assert.assertTrue(storeManagerProductsPages.InventoryPageManageStockCheckBox.isEnabled());
-        if (!storeManagerProductsPages.InventoryPageManageStockCheckBox.isSelected()) {
-            storeManagerProductsPages.InventoryPageManageStockCheckBox.isSelected();
-        }
-
-        //stock qty dodrulanmalı
-        String expectedInventoryPageStockQtyText = storeManagerProductsPages.InventoryPageStockQtyText.getText();
-        Assert.assertEquals(storeManagerProductsPages.InventoryPageStockQtyText.getText(), expectedInventoryPageStockQtyText);
-
-        //stock qty box u erişilebilir olmalı
-        Assert.assertTrue(storeManagerProductAddNewMenu.InventoryPageStockQtyDataBox.isEnabled());
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.clear();
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyDataBox.sendKeys("22");
-        Thread.sleep(1000);
-        storeManagerProductsPages.InventoryPageStockQtyText.click();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+    //shippng secenegi dogrulanmalı tıklanmalı
+        Assert.assertTrue(storeManagerProductsPages.ShippinButton.isDisplayed());
+        jse.executeScript("arguments[0].scrollIntoView(true);",storeManagerProductsPages.ShippinButton);
+        jse.executeScript("arguments[0].click();",storeManagerProductsPages.ShippinButton);
 
 
-        //sumbit butonu  tıklanmalı
+        Assert.assertTrue(storeManagerProductsPages.ShippinButtonWeightText.isDisplayed());
+        storeManagerProductsPages.ShippinButtonDimensionsWidthBox.sendKeys("15");
+
+        Assert.assertTrue(storeManagerProductsPages.ShippinButtonDimensionsText.isDisplayed());
+        storeManagerProductsPages.ShippinButtonDimensionsLengthBox.clear();
+        storeManagerProductsPages.ShippinButtonDimensionsLengthBox.sendKeys("20");
+        storeManagerProductsPages.ShippinButtonDimensionsWidthBox.clear();
+        storeManagerProductsPages.ShippinButtonDimensionsWidthBox.sendKeys("10");
+        storeManagerProductsPages.ShippinButtonDimensionsHeightBox.clear();
+        storeManagerProductsPages.ShippinButtonDimensionsHeightBox.sendKeys("15");
 
         jse.executeScript("arguments[0].scrollIntoView(true);",storeManagerProductsPages.ProductSubmitButton);
         jse.executeScript("arguments[0].click();",storeManagerProductsPages.ProductSubmitButton);
-
-
-        //dogrulama mesajı görünür olmalı
         wait.until(ExpectedConditions.visibilityOf(storeManagerProductsPages.ProductSuccessfullyPublishedMessage));
-
         Assert.assertTrue(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.isDisplayed());
         System.out.println(storeManagerProductsPages.ProductSuccessfullyPublishedMessage.getText());
 
-
+        extentTest.pass("kilo sonucları görüntülendi");
 
 
 
