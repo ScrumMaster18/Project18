@@ -7,8 +7,8 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class StoreMPage {
-    public StoreMPage(){
+public class CustomersPage {
+    public CustomersPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
