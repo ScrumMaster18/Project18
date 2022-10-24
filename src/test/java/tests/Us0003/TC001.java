@@ -25,6 +25,6 @@ public class TC001 {
         myAccountPage.myAccountPageOrdersIcon.click();
         Assert.assertTrue(myAccountPage.myAccountPageOrdersSubPageBrowseProductsButton.isDisplayed());
         myAccountPage.myAccountPageOrdersSubPageBrowseProductsButton.click();
-
+        Driver.closeDriver();
     }
 }
