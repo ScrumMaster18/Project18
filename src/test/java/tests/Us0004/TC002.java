@@ -1,4 +1,4 @@
-package tests.Us0003;
+package tests.Us0004;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,6 +30,13 @@ public class TC002 {
         myAccountPage.shopPageThirdProductForCart.click();
         myAccountPage.shopPageFourthProductForCart.click();
         myAccountPage.shopPageFifthProductForCart.click();
+        myAccountPage.shopPageCartButton.click();
+        Assert.assertTrue(myAccountPage.shoppingCartCheckoutButton.isDisplayed());
+        Assert.assertTrue(myAccountPage.shoppingCartViewCartButton.isDisplayed());
+        myAccountPage.shoppingCartViewCartButton.click();
+        Assert.assertTrue(myAccountPage.shoppingCartProductNameTable.isDisplayed());
+        myAccountPage.shoppingCartFirstProductPlusButton.click();
+        myAccountPage.shoppingCartFirstProductMinusButton.click();
         Driver.closeDriver();
     }
 }

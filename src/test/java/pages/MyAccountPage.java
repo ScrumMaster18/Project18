@@ -200,4 +200,46 @@ public class MyAccountPage {
     @FindBy(xpath = "//button[@id='place_order']")
     public WebElement checkoutPagePlaceOrderButton;
 
+    @FindBy(xpath = "//*[text()='View cart']")
+    public WebElement  shoppingCartViewCartButton;
+
+    @FindBy(xpath = "//th[@class='product-name']")
+    public WebElement shoppingCartProductNameTable;
+
+    @FindBy(xpath = "(//button[@class='quantity-plus w-icon-plus'])[1]")
+    public WebElement shoppingCartFirstProductPlusButton;
+
+    @FindBy(xpath = "(//button[@class='quantity-minus w-icon-minus'])[1]")
+    public WebElement shoppingCartFirstProductMinusButton;
+
+    @FindBy(xpath = "//button[@name='update_cart']")
+    public WebElement shoppingCartUpdateCartButton;
+
+    @FindBy(xpath = "//button[@name='clear_cart']")
+    public WebElement shoppingCartClearCartButton;
+
+    @FindBy(xpath = "//*[text()='Coupon Discount']")
+    public WebElement shoppingCartCouponDiscountTitle;
+
+    @FindBy(xpath = "//input[@name='coupon_code']")
+    public WebElement shoppingCartCouponDiscountTextArea;
+
+    @FindBy(xpath = "//button[@name='apply_coupon']")
+    public WebElement shoppingCartApplyCouponButton;
+
+    @FindBy(xpath = "//a[@class='btn btn-dark btn-rounded btn-icon-left continue-shopping mb-4 mr-auto']")
+    public WebElement shoppingCartContinueShoppingButton;
+
+    @FindBy(xpath = "//table[@class='shop_table']")
+    public WebElement shoppingCartShopTable;
+
+    @FindBy(xpath = "//tr[@class='cart-subtotal']")
+    public WebElement shoppingCartSubtotalText;
+
+    @FindBy(xpath = "//a[@class='checkout-button button alt wc-forward']")
+    public WebElement shoppingCartProceedToCheckoutButton;
+
+    @FindBy(xpath = "(//a[text()='Checkout'])[2]")
+    public WebElement checkoutPageVerifyCheckoutPage;
+
 }

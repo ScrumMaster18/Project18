@@ -1,4 +1,4 @@
-package tests.Us0003;
+package tests.Us0004;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,13 +7,13 @@ import pages.MyAccountPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TC002 {
+public class TC007 {
 
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     MyAccountPage myAccountPage = new MyAccountPage();
 
     @Test
-    public void testCase02() {
+    public void testCase07() {
 
         Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         myAccountPage.signInButton.click();
@@ -30,6 +30,12 @@ public class TC002 {
         myAccountPage.shopPageThirdProductForCart.click();
         myAccountPage.shopPageFourthProductForCart.click();
         myAccountPage.shopPageFifthProductForCart.click();
+        myAccountPage.shopPageCartButton.click();
+        Assert.assertTrue(myAccountPage.shoppingCartCheckoutButton.isDisplayed());
+        Assert.assertTrue(myAccountPage.shoppingCartViewCartButton.isDisplayed());
+        myAccountPage.shoppingCartViewCartButton.click();
+        Assert.assertTrue(myAccountPage.shoppingCartShopTable.isDisplayed());
+        Assert.assertTrue(myAccountPage.shoppingCartSubtotalText.isDisplayed());
         Driver.closeDriver();
     }
 }
