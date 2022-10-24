@@ -34,8 +34,6 @@ public class Us0019 extends TestBaseRapor {
         extentTest.info("Login olundu");
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
-        //Thread.sleep(5000);  //çalışıyo
-        //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[text()='My Account'])[2]")));  //çalışmıyo
         ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].click()",hubcomfyAnaSayfa.homePageMyAccountButton);
         hubcomfyAnaSayfa.homePageMyAccountButton.click();
         Assert.assertTrue(storeManagerPage.myAccountYazı.isDisplayed());
@@ -48,10 +46,6 @@ public class Us0019 extends TestBaseRapor {
         storeManagerPage.storeManagerMenuFollowers.click();
         extentTest.info("Follwers menüsüne girildi");
 
-        //WebElement baslik = Driver.getDriver().findElement(By.xpath("//thead//tr"));
-        //System.out.println(baslik.getText());
-        //WebElement followerlistbody = Driver.getDriver().findElement(By.xpath("//tbody//tr[1]"));
-        //String follower= followerlistbody.getText();
         Assert.assertNotEquals(storeManagerPage.followerlistbody.getText(),"fgfd");
         extentTest.pass("Follower listesi görüntülendi");
 

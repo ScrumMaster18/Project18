@@ -22,7 +22,7 @@ public class Us0021 extends TestBaseRapor {
 
 
     @Test
-    public void reports() throws IOException {
+    public void reports() throws IOException, InterruptedException {
 
         extentTest=extentReports.createTest("Reports Testi","Reportlar Kontrol Edilir");
 
@@ -44,24 +44,28 @@ public class Us0021 extends TestBaseRapor {
 
         storeManagerPage.reportsyear.click();
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(2000);
         ReusableMethods.getScreenshot("Year");
         actions.sendKeys(Keys.PAGE_UP).build().perform();
         extentTest.info("Year reports grafiği kontrol edildi");
 
         storeManagerPage.reportslastmonth.click();
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(2000);
         ReusableMethods.getScreenshot("Last Month");
         actions.sendKeys(Keys.PAGE_UP).build().perform();
         extentTest.info("Last month reports grafiği kontrol edildi");
 
         storeManagerPage.reportsthismonth.click();
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(2000);
         ReusableMethods.getScreenshot("This Month");
         actions.sendKeys(Keys.PAGE_UP).build().perform();
         extentTest.info("This month reports grafiği kontrol edildi");
 
         storeManagerPage.reportslast7days.click();
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(2000);
         ReusableMethods.getScreenshot("Last 7 Days");
         actions.sendKeys(Keys.PAGE_UP).build().perform();
         extentTest.info("Last 7 days reports grafiği kontrol edildi");
@@ -70,6 +74,7 @@ public class Us0021 extends TestBaseRapor {
         storeManagerPage.customdate1.click();
         storeManagerPage.customdate2.click();
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(2000);
         ReusableMethods.getScreenshot("Custom date range reports grafiği kontrol edildi");
         extentTest.info("Custom date range reports grafiği kontrol edildi");
 
