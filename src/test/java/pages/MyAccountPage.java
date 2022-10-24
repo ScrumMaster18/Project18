@@ -85,4 +85,46 @@ public class MyAccountPage {
     @FindBy(xpath = "//iframe[@id='user_description_ifr']")
     public WebElement myAccountPageAccountDetailsSubPageIframe;
 
+    @FindBy(xpath = "//*[text()='Register']")
+    public WebElement registerButton;
+
+    @FindBy(xpath = "(//*[text()='Become a Vendor'])[1]")
+    public WebElement becomeAVendorButton;
+
+    @FindBy(xpath = "//input[@id='user_email']")
+    public WebElement registrationPageEmailBox;
+
+    @FindBy(xpath = "//input[@id='passoword']")
+    public WebElement registrationPagePasswordBox;
+
+    @FindBy(xpath = "//input[@id='confirm_pwd']")
+    public WebElement registrationPageConfirmPasswordBox;
+
+    @FindBy(xpath = "//input[@id='wcfm_membership_register_button']")
+    public WebElement registrationPageRegisterButton;
+
+    @FindBy(xpath = "//*[text()='Sign In']")
+    public WebElement signInButton;
+
+    @FindBy(xpath = "//input[@id='username']")
+    public WebElement signInPageUserNameBox;
+
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement signInPagePasswordBox;
+
+    @FindBy(xpath = "//button[@value='Sign In']")
+    public WebElement signInPageSignInButton;
+
+    @FindBy(xpath = "//span[@class='icon-box-icon icon-wishlist']")
+    public WebElement myAccountPageAccountWishListIcon;
+
+    @FindBy(xpath = "//span[@class='icon-box-icon icon-logout']")
+    public WebElement myAccountPageAccountLogoutIcon;
+
+    @FindBy(xpath = "(//*[text()='Sign In'])[1]")
+    public WebElement registerIcindekiSignInButton;
+
+    @FindBy(xpath = "//*[text()='Sign Out']")
+    public WebElement signOut;
+
 }

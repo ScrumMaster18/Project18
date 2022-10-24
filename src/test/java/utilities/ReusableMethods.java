@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ReusableMethods {
+    public WebElement emailAdresi;
+
     //========ScreenShot(Sayfanın resmini alma)=====//
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication

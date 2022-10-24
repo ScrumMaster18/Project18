@@ -1,5 +1,6 @@
 package utilities;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import pages.HubcomfyAnaSayfa;
 import pages.TempMail;
@@ -7,14 +8,13 @@ import pages.VendorRegistrationPage;
 
 public class ReusableMethots {
 
-HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
+    public WebElement emailAdresi;
+    HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     TempMail tempMail = new TempMail();
     public String email;
     public String verificationCode;
 
     public String tempMailWindowHandle;
-
-
 
 
     public String emailAdresi() {
@@ -32,15 +32,15 @@ HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
         return verificationCode;
 
     }
-public void login(){
-     Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
+
+    public void login() {
+        Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         hubcomfyAnaSayfa.signInButonu.click();
         hubcomfyAnaSayfa.signInPopUpEmail.sendKeys(ConfigReader.getProperty("user"));
-hubcomfyAnaSayfa.signInPopUpPassword.sendKeys(ConfigReader.getProperty("password"));
-hubcomfyAnaSayfa.signInPopUpSignInButonu.click();
+        hubcomfyAnaSayfa.signInPopUpPassword.sendKeys(ConfigReader.getProperty("password"));
+        hubcomfyAnaSayfa.signInPopUpSignInButonu.click();
 
-}
-
+    }
 
 
 }
