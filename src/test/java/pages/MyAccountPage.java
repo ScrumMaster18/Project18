@@ -127,4 +127,25 @@ public class MyAccountPage {
     @FindBy(xpath = "//*[text()='Sign Out']")
     public WebElement signOut;
 
+    @FindBy(xpath = "//*[text()='Store Manager']")
+    public WebElement myAccountPageDashBoardStoreManagerMenu;
+
+    @FindBy(xpath = "(//*[text()='Orders'])[1]")
+    public WebElement myAccountPageDashBoardOrdersMenu;
+
+    @FindBy(xpath = "(//*[text()='Downloads'])[1]")
+    public WebElement myAccountPageDashBoardDownloadsMenu;
+
+    @FindBy(xpath = "(//*[text()='Addresses'])[1]")
+    public WebElement myAccountPageDashBoardAddressesMenu;
+
+    @FindBy(xpath = "//*[text()='Support Tickets']")
+    public WebElement myAccountPageDashBoardSupportsTicketsMenu;
+
+    @FindBy(xpath = "//*[text()='Followings']")
+    public WebElement myAccountPageDashBoardFollowingsMenu;
+
+    @FindBy(xpath = "(//*[text()='Logout'])[1]")
+    public WebElement myAccountPageDashBoardLogoutMenu;
+
 }

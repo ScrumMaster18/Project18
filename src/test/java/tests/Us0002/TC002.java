@@ -1,25 +1,19 @@
-package tests.US0002;
+package tests.Us0002;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HubcomfyAnaSayfa;
 import pages.MyAccountPage;
-import pages.StoreManagerPage;
-import pages.VendorRegistrationPage;
-import utilities.*;
+import utilities.ConfigReader;
+import utilities.Driver;
 
-public class TC001 {
+public class TC002 {
 
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     MyAccountPage myAccountPage = new MyAccountPage();
 
-
     @Test
-    public void testCase01() {
+    public void testCase02() {
 
         Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         myAccountPage.registerButton.click();
@@ -29,7 +23,12 @@ public class TC001 {
         myAccountPage.signInPagePasswordBox.sendKeys("Project_18..");
         myAccountPage.signInPageSignInButton.click();
         myAccountPage.signOut.click();
-        Assert.assertTrue(myAccountPage.myAccountPageTitle.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageOrdersIcon.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageDownloadsIcon.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageAddressesIcon.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageAccountDetailsIcon.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageAccountWishListIcon.isDisplayed());
+        Assert.assertTrue(myAccountPage.myAccountPageAccountLogoutIcon.isDisplayed());
         Driver.closeDriver();
     }
 }

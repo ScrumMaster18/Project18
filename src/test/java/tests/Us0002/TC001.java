@@ -1,20 +1,18 @@
-package tests.US0002;
+package tests.Us0002;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HubcomfyAnaSayfa;
 import pages.MyAccountPage;
-import utilities.ConfigReader;
-import utilities.Driver;
+import utilities.*;
 
-public class TC002 {
+public class TC001 {
 
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     MyAccountPage myAccountPage = new MyAccountPage();
 
-
     @Test
-    public void testCase02() {
+    public void testCase01() {
 
         Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         myAccountPage.registerButton.click();
@@ -24,5 +22,7 @@ public class TC002 {
         myAccountPage.signInPagePasswordBox.sendKeys("Project_18..");
         myAccountPage.signInPageSignInButton.click();
         myAccountPage.signOut.click();
+        Assert.assertTrue(myAccountPage.myAccountPageTitle.isDisplayed());
+        Driver.closeDriver();
     }
 }
