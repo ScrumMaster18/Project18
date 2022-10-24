@@ -148,4 +148,56 @@ public class MyAccountPage {
     @FindBy(xpath = "(//*[text()='Logout'])[1]")
     public WebElement myAccountPageDashBoardLogoutMenu;
 
+    @FindBy(xpath = "//*[text()='Browse products']")
+    public WebElement myAccountPageOrdersSubPageBrowseProductsButton;
+
+    @FindBy(xpath = "(//a[@class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[1]")
+    public WebElement shopPageFirstProductForCart;
+
+    @FindBy(xpath = "(//a[@class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[2]")
+    public WebElement shopPageSecondProductForCart;
+
+    @FindBy(xpath = "(//a[@class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[3]")
+    public WebElement shopPageThirdProductForCart;
+
+    @FindBy(xpath = "(//a[@class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[4]")
+    public WebElement shopPageFourthProductForCart;
+
+    @FindBy(xpath = "(//a[@class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[5]")
+    public WebElement shopPageFifthProductForCart;
+
+    @FindBy(xpath = "(//i[@class='w-icon-cart'])[1]")
+    public WebElement shopPageCartButton;
+
+    @FindBy(xpath = "//a[@class='button checkout wc-forward']")
+    public WebElement shoppingCartCheckoutButton;
+
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement checkoutPageFirstNameBox;
+
+    @FindBy(xpath = "//input[@id='billing_last_name']")
+    public WebElement checkoutPageLastNameBox;
+
+    @FindBy(xpath = "//span[@id='select2-billing_country-container']")
+    public WebElement checkoutPageCountryDropDownMenu;
+
+    @FindBy(xpath = "//input[@id='billing_address_1']")
+    public WebElement checkoutPageAddressBox;
+
+    @FindBy(xpath = "//input[@id='billing_city']")
+    public WebElement checkoutPageTownCityBox;
+
+    @FindBy(xpath = "//input[@id='billing_state']")
+    public WebElement checkoutPageStateCountryBox;
+
+    @FindBy(xpath = "//input[@id='billing_phone']")
+    public WebElement checkoutPagePhoneBox;
+    @FindBy(xpath = "//*[@id='billing_postcode']")
+    public WebElement checkoutPageZipBox;
+    @FindBy(xpath = "//input[@id='billing_email']")
+    public WebElement checkoutPageEmailBox;
+
+    @FindBy(xpath = "//button[@id='place_order']")
+    public WebElement checkoutPagePlaceOrderButton;
+
 }
