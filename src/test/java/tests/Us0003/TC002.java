@@ -30,6 +30,5 @@ public class TC002 {
         myAccountPage.shopPageThirdProductForCart.click();
         myAccountPage.shopPageFourthProductForCart.click();
         myAccountPage.shopPageFifthProductForCart.click();
-
     }
 }
