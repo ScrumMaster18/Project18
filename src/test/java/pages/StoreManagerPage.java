@@ -6,11 +6,13 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class StoreManagerPage {
+    public WebElement myAccountYazı;
+
     public StoreManagerPage() {
         PageFactory.initElements(Driver.getDriver(), this);    }
 
-    @FindBy(xpath = "//span[contains(text(),'Products')]")
-public WebElement storeManagerMenuProducts;
+    @FindBy(xpath = "(//*[@class='text'])[4]")
+    public WebElement storeManagerMenuProducts;
     @FindBy(xpath = "//span[contains(text(),'Orders')]")
     public WebElement storeManagerMenuOrders;
     @FindBy(xpath = "//span[contains(text(),'Coupons')]")

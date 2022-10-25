@@ -37,5 +37,8 @@ public class HubcomfyAnaSayfa {
     @FindBy (xpath = "//*[text()='Store Manager']")
     public WebElement myAccountPageStoreManagerMenu;
 
+    @FindBy(xpath = "//*[text()='Sign Out']")
+    public WebElement signOutButton;
+
 
 }
