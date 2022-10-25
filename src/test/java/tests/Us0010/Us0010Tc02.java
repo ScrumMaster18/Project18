@@ -111,9 +111,6 @@ public class Us0010Tc02 extends TestBaseRapor {
 
         extentTest.info("SelectAll secenegi görünür ve erişilebilirdir");
 
-
-        //Size olmayan secenekler ss ile belgelenip bu test fail olarak raporlanmalıdır ama nasıl??
-
         //Sumbit Button dogrulanmalı tıklanmalı
         jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerProductsPages.ProductSubmitButton);
         jse.executeScript("arguments[0].click();", storeManagerProductsPages.ProductSubmitButton);
@@ -128,12 +125,6 @@ public class Us0010Tc02 extends TestBaseRapor {
         extentTest.pass("Dogrulama mesajı görüntülendi");
 
 
-
-
-
-
-        // WebElement sizeSelectAll=Driver.getDriver().findElement(By.xpath("//*[@class='select2-selection__rendered'])[3]"));
-        // ReusableMethods.getScreenshotWebElement("sizeBox", sizeSelectAll);
 
     }}
 

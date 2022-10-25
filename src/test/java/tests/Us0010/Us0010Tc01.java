@@ -108,8 +108,6 @@ public class Us0010Tc01 extends TestBaseRapor {
 
         extentTest.info("SelectAll secenegi görünür ve erişilebilirdir");
 
-        //Renk olmayan secenekler ss ile belgelenip bu test fail olarak raporlanmalıdır ama nasıl??
-
         //Sumbit Button dogrulanmalı tıklanmalı
         jse.executeScript("arguments[0].scrollIntoView(true);", storeManagerProductsPages.ProductSubmitButton);
         jse.executeScript("arguments[0].click();", storeManagerProductsPages.ProductSubmitButton);

@@ -2,14 +2,10 @@
 <suite name="istenen methodlar">
     <test name="method">
         <classes>
-            <class name="tests.day16.C03_Priority">
+
+            <class name="tests.Us0001.US001">
                 <methods>
-                    <include name="bestbuyTest"/>
-                </methods>
-            </class>
-            <class name="tests.day16.C02_BeforeClassAfterClass">
-                <methods>
-                    <exclude name="testAmazon"/>
+                    <include name="login"/>
                 </methods>
             </class>
         </classes>
