@@ -130,11 +130,5 @@ public class Us08Tc01 extends TestBaseRapor {
 
         extentTest.info("Dogrulama mesajı görünür ve tıklandı");
 
-
-
-
-
-
-
     }
 }

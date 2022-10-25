@@ -5,7 +5,7 @@ import pages.HubcomfyAnaSayfa;
 import pages.TempMail;
 import pages.VendorRegistrationPage;
 
-public class ReusableMethots {
+public class ReusableMethots extends TestBaseRapor{
 
 HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
     TempMail tempMail = new TempMail();
@@ -33,11 +33,18 @@ HubcomfyAnaSayfa hubcomfyAnaSayfa=new HubcomfyAnaSayfa();
 
     }
 public void login(){
-     Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
+    extentTest=extentReports.createTest("Login Testi","Login Oldugu Kontrol Edilir");
+
+    Driver.getDriver().get(ConfigReader.getProperty("hubComfyUrl"));
         hubcomfyAnaSayfa.signInButonu.click();
         hubcomfyAnaSayfa.signInPopUpEmail.sendKeys(ConfigReader.getProperty("user"));
 hubcomfyAnaSayfa.signInPopUpPassword.sendKeys(ConfigReader.getProperty("password"));
 hubcomfyAnaSayfa.signInPopUpSignInButonu.click();
+
+    extentTest.info("Basırılı bir sekilde login olundu");
+
+
+
 
 }
 
