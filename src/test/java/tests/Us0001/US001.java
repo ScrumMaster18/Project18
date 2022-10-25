@@ -7,8 +7,9 @@ import pages.VendorRegistrationPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethots;
+import utilities.TestBaseRapor;
 
-public class US001 {
+public class US001 extends TestBaseRapor {
     HubcomfyAnaSayfa hubcomfyAnaSayfa = new HubcomfyAnaSayfa();
     VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
     String HubComfyWindowHandle;
@@ -37,8 +38,11 @@ public class US001 {
     }
     @Test
     public void login(){
-
+        extentTest=extentReports.createTest("Login Testi","Login Oldugu Kontrol Edilir");
         reusableMethots.login();
+        extentTest.info("Basırılı bir sekilde login olundu");
+        extentTest.pass("Reportlar görüntülendi");
+
 
     }
 }

@@ -33,7 +33,7 @@ public class StoreManagerPage {
     public WebElement storeManagerMenuReports;
 
     @FindBy(xpath = "//h2[@class='page-title']")
-    public WebElement myAccountYazı;
+    public WebElement myAccountYazıı;
 
     @FindBy(xpath = "//a[@href='https://hubcomfy.com/store-manager/product-reviews/']")
     public WebElement productReviews;

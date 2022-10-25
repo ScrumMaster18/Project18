@@ -44,6 +44,8 @@ hubcomfyAnaSayfa.signInPopUpSignInButonu.click();
     extentTest.info("Basırılı bir sekilde login olundu");
 
 
+
+
 }
 
 
