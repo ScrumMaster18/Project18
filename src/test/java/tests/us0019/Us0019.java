@@ -44,9 +44,10 @@ public class Us0019 extends TestBaseRapor {
 
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
         storeManagerPage.storeManagerMenuFollowers.click();
-        extentTest.info("Follwers menüsüne girildi");
+        extentTest.info("Followers menüsüne girildi");
 
-        Assert.assertNotEquals(storeManagerPage.followerlistbody.getText(),"fgfd");
+        Assert.assertEquals(storeManagerPage.followerlistbody.getText(),"tlh\\n\" +\n" +
+                "                \"mnebipwpbwiyxfocsp@tmmwj.com");
         extentTest.pass("Follower listesi görüntülendi");
 
     }
